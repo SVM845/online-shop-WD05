@@ -1,5 +1,7 @@
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,18 +25,31 @@ body {
 }
 
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -42,34 +57,120 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
-/* CSS */
+/*========== CSS ========== */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid red;
-    width: 100vw;
-    height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid red; */
+  width: 100vw;
+  height: 100px;
+  padding: 10px;
+  gap: 20px;
+  background-color: #aba5a5;
 }
-.header img{
-    width: 150px;
-    height: 150px;
+.header img {
+  position: relative;
+  width: 150px;
+  height: 100px;
 }
 
-#search-bar input {
-    width: 500px;
-    height: 40px;
-    border: 2px solid red;
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 850px;
+  height: 55px;
+
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+
+  overflow: hidden;
+}
+
+.search-bar input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  text-align: right;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  height: 100%;
+  padding: 0 20px;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  color: #888;
+}
+.search-bar button:hover {
+  transition: 0.5s ease-in-out;
+  background-color: red;
+  color: white;
+}
+
+.header-right-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* changing the appeareance of cart and moon SVG's */
+.cart-icon {
+  width: 30px;
+  height: 30px;
+  color: #333;
+  cursor: pointer;
+}
+.theme-icon {
+  width: 30px;
+  height: 30px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.header-ul {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.header-ul li {
+  list-style: none;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 2px;
+  /* for li text not going in 2 line and stay in one line */
+  white-space: nowrap;
+}
+
+#login-signup-li {
+  font-weight: bold;
+  font-size: 20px;
 }
