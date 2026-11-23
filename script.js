@@ -1,7 +1,4 @@
-const gpuContainer = document.querySelector('.gpu-container')
-
-
-
+const gpuContainer = document.querySelector(".gpu-container");
 
 const products = [
   {
@@ -9,7 +6,7 @@ const products = [
     name: "RX 9070 XT",
     price: 1200,
     category: "gpu",
-    image: "./images/GPU/9070.png"
+    image: "./images/GPU/9070.png",
   },
 
   {
@@ -17,7 +14,7 @@ const products = [
     name: "RX 9060 XT",
     price: 1000,
     category: "gpu",
-    image: "./images/GPU/9060.png"
+    image: "./images/GPU/9060.png",
   },
 
   {
@@ -25,7 +22,7 @@ const products = [
     name: "RX 6800 XT",
     price: 900,
     category: "gpu",
-    image: "./images/GPU/6800XT.jpg"
+    image: "./images/GPU/6800XT.jpg",
   },
 
   {
@@ -33,7 +30,7 @@ const products = [
     name: "RTX 5080",
     price: 2300,
     category: "gpu",
-    image: "./images/GPU/5080.jpg"
+    image: "./images/GPU/5080.jpg",
   },
 
   {
@@ -41,6 +38,23 @@ const products = [
     name: "RTX 5060",
     price: 2000,
     category: "gpu",
-    image: "./images/GPU/5060.png"
+    image: "./images/GPU/5060.png",
   },
 ];
+
+products.forEach((product) => {
+  if (product.category === "gpu") {
+    const cardHTML = `
+    <article class="gpu-card">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+    </article>
+`;
+    gpuContainer.insertAdjacentHTML("beforeend", cardHTML);
+  }
+});
+gpuContainer.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  gpuContainer.scrollLeft += event.deltaY;
+});
