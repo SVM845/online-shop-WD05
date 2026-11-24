@@ -1,213 +1,310 @@
-/* 1. Use a more-intuitive box-sizing model */
+
+/* ================= RESET ================= */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 2. Remove default margin */
 *:not(dialog) {
   margin: 0;
 }
 
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  /* 4. Increase line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.6;
+  background: #f4f6fa;
+  color: #1e293b;
 }
 
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/*
-  10. Create a root stacking context
-*/
-#root,
-#__next {
-  isolation: isolate;
-}
-
-/*========== CSS ========== */
+/* ================= HEADER ================= */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 100px;
-    padding: 10px 20px;
-    gap: 20px;
-    background-color: #aba5a5;
-    box-sizing: border-box;
+  width: 100%;
+  min-height: 105px;
+  padding: 10px 35px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  background: #111827;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
 }
-.header img {
-  position: relative;
-  width: 150px;
-  height: 100px;
+
+/* RIGHT SECTION: LOGO + SEARCH */
+
+.header-right-items {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  flex: 1;
+  min-width: 0;
 }
+
+.header-right-items img {
+  width: 145px;
+  height: 85px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ================= SEARCH BAR ================= */
 
 .search-bar {
   display: flex;
   align-items: center;
-  width: 850px;
-  height: 55px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  background-color: #f5f5f5;
+
+  width: 100%;
+  max-width: 750px;
+  height: 50px;
+
+  border: 1px solid #374151;
+  border-radius: 12px;
+  background: #1f2937;
 
   overflow: hidden;
+  transition: 0.3s;
+}
+
+.search-bar:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .search-bar input {
   flex: 1;
+  min-width: 0;
   height: 100%;
+
+  padding: 0 15px;
+
   border: none;
   outline: none;
+
   background: transparent;
+  color: white;
+
   text-align: right;
-  padding: 0 15px;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
 }
 
 .search-bar button {
-  height: 100%;
-  padding: 0 20px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 22px;
-  color: #888;
-}
-.search-bar button:hover {
-  transition: 0.5s ease-in-out;
-  background-color: red;
-  color: white;
-}
-
-.header-right-items {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+
+  height: 100%;
+  padding: 0 18px;
+
+  border: none;
+  background: #2563eb;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-/* changing the appeareance of cart and moon SVG's */
-.cart-icon {
-  width: 30px;
-  height: 30px;
-  color: #333;
-  cursor: pointer;
+.search-bar button:hover {
+  background: #1d4ed8;
 }
-.theme-icon {
-  width: 30px;
-  height: 30px;
-  color: var(--text-color);
-  cursor: pointer;
+
+/* ================= LEFT SECTION ================= */
+
+.header-left-items {
+  flex-shrink: 0;
 }
 
 .header-ul {
-  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-}
-.header-ul li {
+
+  gap: 22px;
+  padding: 0;
+
   list-style: none;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  letter-spacing: 2px;
-  /* for li text not going in 2 line and stay in one line */
-  white-space: nowrap;
 }
+
+.header-ul li {
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.header-ul li:hover {
+  color: #60a5fa;
+}
+
+/* LOGIN / SIGNUP */
 
 #login-signup-li {
+  font-size: 16px;
   font-weight: bold;
-  font-size: 20px;
 }
+
+/* ================= SVG ICONS ================= */
+
+.cart-icon,
+.theme-icon {
+  display: block;
+
+  width: 27px;
+  height: 27px;
+
+  color: #e5e7eb;
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.cart-icon:hover,
+.theme-icon:hover {
+  color: #60a5fa;
+  transform: translateY(-3px);
+}
+
+/* ================= PRODUCTS SECTION ================= */
 
 .products-container {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+
+  gap: 15px;
+  padding: 35px 0;
 }
-.gpu-container {
+
+.products-container h1 {
+  width: 90%;
+  text-align: right;
+
+  font-size: 23px;
+  font-weight: 700;
+
+  color: #1e293b;
+  margin-top: 15px;
+}
+
+/* ================= PRODUCT CONTAINERS ================= */
+
+.gpu-container,
+.cpu-container,
+.ram-container {
+  width: 90%;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid red;
-  width: 95vw;
-  height: 40vh;
-}
-/* The container holding all product cards */
-.gpu-container {
-    display: flex;
-    gap: 20px;
-    overflow-y: hidden ;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 15px;
+  gap: 20px;
+
+  padding: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #f1f5f9;
 }
 
-/* Each individual card */
+/* SCROLLBAR */
+
+.gpu-container::-webkit-scrollbar,
+.cpu-container::-webkit-scrollbar,
+.ram-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gpu-container::-webkit-scrollbar-thumb,
+.cpu-container::-webkit-scrollbar-thumb,
+.ram-container::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 20px;
+}
+
+/* ================= PRODUCT CARDS ================= */
+
 .gpu-card {
-    flex: 0 0 250px;
-    height: 350px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+  flex: 0 0 250px;
+
+  height: 330px;
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
 }
 
-/* Product image */
-.gpu-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: contain;
+.gpu-card:hover {
+  transform: translateY(-6px);
+  border-color: #93c5fd;
+
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.1);
 }
+
+/* PRODUCT IMAGES */
+
+.gpu-card img {
+  width: 100%;
+  height: 180px;
+
+  object-fit: contain;
+
+  transition: 0.3s;
+}
+
+.gpu-card:hover img {
+  transform: scale(1.05);
+}
+
+/* PRODUCT NAME */
+
+.gpu-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* PRODUCT PRICE */
+
+.gpu-card p {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+
